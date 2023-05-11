@@ -1,7 +1,6 @@
 import java.util.*;
-
+//This one suck
 public class DiceParser{
-    /* this is a helper class to manage the input "stream"*/
     private static class StringStream{
 	StringBuffer buff;
 	public StringStream(String s){
@@ -133,12 +132,6 @@ public class DiceParser{
 	return parseDTail(parseDiceInner(ss),ss);
     }
     private static DieRoll parseDiceInner(StringStream ss){
-	/*if(checkAndEat("FA(")) {
-	    DieRoll d=parseFA(ss);
-	    if(d==null)
-		return null;
-	    return parseDTail(d,ss);
-	    }*/
 	Integer num=ss.getInt();
 	int dsides;
 	int ndice;
