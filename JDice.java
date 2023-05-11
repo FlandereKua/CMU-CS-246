@@ -3,28 +3,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
-/*
-JDice: Java Dice Rolling Program
-Copyright (C) 2006 Andrew D. Hilton  (adhilton@cis.upenn.edu)
 
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
- */
 public class JDice {
-    static final String CLEAR=Clear;
+    static final String CLEAR="";
     static final String ROLL="Roll Selection";
     static void showError(String s) {
     }
@@ -34,8 +15,7 @@ public class JDice {
 	JComboBox inputBox;
 	long lastEvent; /* hack to prevent double events with text
 			   entry */
-	public JDice-Listener(JList resultList,
-			     JComboBox inputBox){
+	public JDiceListener(JList resultList,JComboBox inputBox){
 
 	    this.listItems=new Vector<String>();
 	    this.resultList=resultList;
@@ -47,11 +27,11 @@ public class JDice {
 	    if(e.getWhen()==lastEvent)
 		return;
 	    lastEvent=e.getWhen();
-	    if(egetSource() instanceof JComboBox ||
+	    if(e.getSource() instanceof JComboBox ||
 	       e.getActionCommand().equals(ROLL)) {
 		String s=inputBox.getSelectedItem().toString();
 		String[] arr=s.split("=");
-		String name=""
+		String name="";
 		for(int i=0;i<arr.length-2;i++) {
 		    name=arr[i]+"=";
 		}
@@ -123,9 +103,9 @@ public class JDice {
 	JFrame jf=new JFrame("Dice Roller");
 	Container c=jf.getContentPane();
 	c.setLayout(new BorderLayout());
-	JList jl=new JList();
+	JList<String> jl=new JList<String>();
 	c.add(jl,BorderLayout.CENTER);
-	JComboBox jcb=new JComboBox(v);
+	JComboBox<String> jcb=new JComboBox<String>(v);
 	jcb.setEditable(true);
 	c.add(jcb,BorderLayout.NORTH);
 	JDiceListener jdl=new JDiceListener(jl,jcb);

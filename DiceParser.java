@@ -1,29 +1,9 @@
 import java.util.*;
-/*
-JDice: Java Dice Rolling Program
-Copyright (C) 2006 Andrew D. Hilton  (adhilton@cis.upenn.edu)
-
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
- */
 
 public class DiceParser{
     /* this is a helper class to manage the input "stream"*/
     private static class StringStream{
-//	StringBuffer buff;
+	StringBuffer buff;
 	public StringStream(String s){
 	    buff=new StringBuffer(s);
 	}
@@ -40,20 +20,20 @@ public class DiceParser{
 	}
 	public boolean isEmpty(){
 	    munchWhiteSpace();
-	    return bufftoString().equals("");
+	    return buff.toString().equals("");
 	}
 	public Integer getInt(){
 	    return readInt();
 	}
 	public Integer readInt(){
 	    int index=0;
-	    
+		char curr;
 	    munchWhiteSpace();
 	    while(index<buff.length()){
 		curr=buff.charAt(index);
 		if(!Character.isDigit(curr))
 		    break;
-		
+
 	    }
 	    try{
 		Integer ans;
@@ -78,7 +58,7 @@ public class DiceParser{
 	    }
 	    if(checkAndEat("-")) {
 		Integer ans=readInt();
-		(ans!=null)
+		if(ans!=null)
 		    return -ans;
 		restore(state);
 		return null;
@@ -91,7 +71,7 @@ public class DiceParser{
 		buff=buff.delete(0,s.length());
 		return true;
 	    }
-	    return false
+	    return false;
 	}
 	public StringStream save() {
 	    return new StringStream(buff.toString());
@@ -104,19 +84,6 @@ public class DiceParser{
 	}
 
     }
-    /** roll::= ndice ; roll
-              | ndice
-        xdice::= dice
-                | N X dice
-        dice::= die bonus?  dtail
-              XXXX| FA(die,bonus,N) dtail
-         dtail::= & dice 
-                | <nothing>
-         die::= (N)? dN
-         bonus::= + N
-                | -N
-    **/
-
     public static Vector<DieRoll> parseRoll(String s){
 	StringStream ss=new StringStream(s.toLowerCase());
 	Vector<DieRoll> v= parseRollInner(ss,new Vector<DieRoll>());
@@ -162,10 +129,6 @@ public class DiceParser{
 	}
 	return ans;
     }
-    /**
-     * dice::= die (bonus?) dtail
-     *       XXXX| FA(die,bonus,N) dtail
-     */
     private static DieRoll parseDice(StringStream ss){
 	return parseDTail(parseDiceInner(ss),ss);
     }
