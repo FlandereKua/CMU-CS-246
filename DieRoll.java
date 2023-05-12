@@ -14,6 +14,8 @@ public class DieRoll {
 	this.nsides=nsides;
 	this.bonus=bonus;
     }
+    
+    // note NAv
     public RollResult makeRoll() {
 	RollResult r=new RollResult(bonus);
 	for(int i=0;i<ndice;i++) {
