@@ -7,7 +7,8 @@ public class RollResult {
     private RollResult(int total, int modifier,Vector<Integer> rolls){
 	this.total=total;
 	this.modifier=modifier;
-	this.rolls=rolls;}
+	this.rolls=rolls;
+	}
     public RollResult(int bonus) {
 	this.total=bonus;
 	this.modifier=bonus;
