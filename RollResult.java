@@ -8,7 +8,7 @@ public class RollResult {
 	this.total=total;
 	this.modifier=modifier;
 	this.rolls=rolls;
-    }
+	}
     public RollResult(int bonus) {
 	this.total=bonus;
 	this.modifier=bonus;
