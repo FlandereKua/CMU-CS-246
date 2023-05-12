@@ -25,6 +25,7 @@ public class DiceParser{
 	public Integer getInt(){
 	    return readInt();
 	}
+	//helloworlfd==đf
 	public Integer readInt(){
 	    int index=0;
 		char curr;
