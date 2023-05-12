@@ -2,7 +2,7 @@ import java.util.Vector;
 public class RollResult {
     int total;
     int modifier;
-//    Vector<Integer> rolls;
+    Vector<Integer> rolls;
 	private Vector<Integer> rolls;
     private RollResult(int total, int modifier,Vector<Integer> rolls){
 	this.total=total;
