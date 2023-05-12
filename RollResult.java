@@ -23,8 +23,7 @@ public class RollResult {
 	Vector<Integer> rolls=new Vector<Integer>();
 	rolls.addAll(this.rolls);
 	rolls.addAll(r2.rolls);
-	return new RollResult(total);
-    }
+	return new RollResult(total);}
     public String toString() {
 	return total +"  <= " +rolls.toString()+ 
 	    (modifier>0?("+"+modifier):
