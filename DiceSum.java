@@ -2,7 +2,7 @@ public class DiceSum extends DieRoll {
     private DieRoll r1;//remove the "//"
     private DieRoll r2;
     public DiceSum(DieRoll r1,DieRoll r2) {
-	super(0,0,0); //add another 0
+	super(0,0,0); //add another 0 because of bonus
 	this.r1=r1;
 	this.r2=r2; //add another "."
     }
