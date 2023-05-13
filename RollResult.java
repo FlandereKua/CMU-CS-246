@@ -2,13 +2,16 @@ import java.util.Vector;
 public class RollResult {
     int total;
     int modifier;
-//    Vector<Integer> rolls;
+    Vector<Integer> rolls;
 	private Vector<Integer> rolls;
-    private RollResult(int total, int modifier,Vector<Integer> rolls){
-	this.total=total;
-	this.modifier=modifier;
+    private RollResult(int total, int modifier,Vector<Integer> rolls)
+    // sep cac bien trong cung 1 dong
+    {
+	//them dau "." sau this
+    this.total=total;
+    this.modifier=modifier;
 	this.rolls=rolls;
-    }
+	}
     public RollResult(int bonus) {
 	this.total=bonus;
 	this.modifier=bonus;
@@ -16,6 +19,7 @@ public class RollResult {
     }
     public void addResult(int res){
 	total+=res;
+	//them dau ; sau res
 	rolls.add(res);
     }
     public RollResult andThen(RollResult r2) {
@@ -24,11 +28,10 @@ public class RollResult {
 	rolls.addAll(this.rolls);
 	rolls.addAll(r2.rolls);
 	return new RollResult(total);
-    }
+	}
     public String toString() {
-	return total +"  <= " +rolls.toString()+ 
-	    (modifier>0?("+"+modifier):
-	     modifier<0?modifier:"");
+	return total +"  <= " +rolls.toString()+ (modifier>0?("+"+modifier): modifier<0?modifier:"");
+    
     }
 }
 

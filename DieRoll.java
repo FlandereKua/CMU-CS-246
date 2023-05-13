@@ -40,6 +40,4 @@ public class DieRoll {
 	}
 	return ans;
     }
-    // n
-
 };
