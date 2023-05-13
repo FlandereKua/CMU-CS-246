@@ -1,8 +1,9 @@
 import java.util.*;
-//This one suck
+
 public class DiceParser{
+    /* this is a helper class to manage the input "stream"*/
     private static class StringStream{
-	StringBuffer buff;
+	//StringBuffer buff;
 	public StringStream(String s){
 	    buff=new StringBuffer(s);
 	}
@@ -19,13 +20,16 @@ public class DiceParser{
 	}
 	public boolean isEmpty(){
 	    munchWhiteSpace();
+	    //bufftoString
 	    return buff.toString().equals("");
 	}
 	public Integer getInt(){
 	    return readInt();
 	}
+	//helloworlfd==đf
 	public Integer readInt(){
 	    int index=0;
+	//    char curr
 		char curr;
 	    munchWhiteSpace();
 	    while(index<buff.length()){
@@ -50,6 +54,7 @@ public class DiceParser{
 	    StringStream state=save();
 	    if(checkAndEat("+")) {
 		Integer ans=readInt();
+		//if
 		if(ans!=null)
 		    return ans;
 		restore(state);
@@ -132,6 +137,12 @@ public class DiceParser{
 	return parseDTail(parseDiceInner(ss),ss);
     }
     private static DieRoll parseDiceInner(StringStream ss){
+	/*if(checkAndEat("FA(")) {
+	    DieRoll d=parseFA(ss);
+	    if(d==null)
+		return null;
+	    return parseDTail(d,ss);
+	    }*/
 	Integer num=ss.getInt();
 	int dsides;
 	int ndice;
