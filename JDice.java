@@ -1,10 +1,11 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 import java.io.*;
-
 public class JDice {
+    //static final String CLEAR=Clear; create null value
     static final String CLEAR="";
     static final String ROLL="Roll Selection";
     static void showError(String s) {
@@ -15,6 +16,8 @@ public class JDice {
 	JComboBox inputBox;
 	long lastEvent; /* hack to prevent double events with text
 			   entry */
+//	public JDice-Listener(JList resultList,
+//			     JComboBox inputBox){
 	public JDiceListener(JList resultList,JComboBox inputBox){
 
 	    this.listItems=new Vector<String>();
@@ -27,11 +30,12 @@ public class JDice {
 	    if(e.getWhen()==lastEvent)
 		return;
 	    lastEvent=e.getWhen();
-	    if(e.getSource() instanceof JComboBox ||
+//	    if(egetSource() lack "."
+	    if(e.getSource()instanceof JComboBox ||
 	       e.getActionCommand().equals(ROLL)) {
 		String s=inputBox.getSelectedItem().toString();
 		String[] arr=s.split("=");
-		String name="";
+		String name=""; //lack ;
 		for(int i=0;i<arr.length-2;i++) {
 		    name=arr[i]+"=";
 		}
@@ -47,7 +51,7 @@ public class JDice {
 	    }
 	}
 	private void doClear(){
-	    resultList.clearSelection();
+		resultList.clearSelection();
 	    listItems.clear();
 	    resultList.setListData(listItems);
 	}
@@ -77,7 +81,9 @@ public class JDice {
 		selectionIndices[i]=i;
 	    }
 	    resultList.setListData(listItems);
-	    resultList.	setSelectedIndices(selectionIndices);
+	  //  excess distance
+//	    resultList. setSelectedIndices(selectionIndices);
+	    resultList.setSelectedIndices(selectionIndices);
 	}
 
 
@@ -98,13 +104,14 @@ public class JDice {
 		System.err.println("Could not read input file: "+args[0]);
 		System.err.println("***********\n**********\n");
 	    }
-
 	}
 	JFrame jf=new JFrame("Dice Roller");
 	Container c=jf.getContentPane();
 	c.setLayout(new BorderLayout());
+	// add string
 	JList<String> jl=new JList<String>();
 	c.add(jl,BorderLayout.CENTER);
+	// add string
 	JComboBox<String> jcb=new JComboBox<String>(v);
 	jcb.setEditable(true);
 	c.add(jcb,BorderLayout.NORTH);
