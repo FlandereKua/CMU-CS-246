@@ -104,7 +104,6 @@ public class JDice {
 		System.err.println("Could not read input file: "+args[0]);
 		System.err.println("***********\n**********\n");
 	    }
-
 	}
 	JFrame jf=new JFrame("Dice Roller");
 	Container c=jf.getContentPane();
