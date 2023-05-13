@@ -19,7 +19,7 @@ public class RollResult {
     }
     public void addResult(int res){
 	total+=res;
-	//them dau ;
+	//them dau ; sau res
 	rolls.add(res);
     }
     public RollResult andThen(RollResult r2) {
@@ -31,6 +31,7 @@ public class RollResult {
 	}
     public String toString() {
 	return total +"  <= " +rolls.toString()+ (modifier>0?("+"+modifier): modifier<0?modifier:"");
+    
     }
 }
 
